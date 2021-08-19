@@ -1,14 +1,22 @@
 require "csv" #csvライブラリの読み込み
 
-def result #実行結果の表示
+###############
+# 呼び出し用関数
+###############
+def result(file_name) #実行結果の表示
   puts "以下の内容でcsvファイルを作成しました"
   puts "ファイル名:#{file_name}"
   puts "内容:"
   puts CSV.read(file_name) #csv読み込み
 end
 
+
+###############
+# 本処理
+###############
+
 puts "1(新規でメモを作成) 2(既存のメモを編集する)"
-loop do
+loop do #1,2以外が入力されたときの再入力用のloop
   memo_type = gets.to_i #getsはstring取得のためint変換
 
   #ifで1,2ごとの処理を決定
@@ -27,7 +35,7 @@ loop do
       csv << [STDIN.read] #csvへ標準入力
     end
 
-    result #実行結果呼び出し
+    result(file_name) #実行結果呼び出し
 
     break #loop終了
 
@@ -45,7 +53,7 @@ loop do
       csv << [STDIN.read] #csvへ標準入力
     end
 
-    result #実行結果呼び出し
+    result(file_name) #実行結果呼び出し
 
     break #loop終了
 
